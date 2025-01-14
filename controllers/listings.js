@@ -27,7 +27,6 @@ module.exports.new_listing = async (req, res, next) => {
         
                 req.flash("success", "New Listing Created!");
                 res.redirect("/listings");
-                next();
             };
 
 
