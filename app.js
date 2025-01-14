@@ -106,7 +106,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 const port = 3000;
 app.listen(port,()=>{
-    console.log("App is Listening Port : "+port);
+    res.redirect("/listings");
 })
 
 app.get("/",(req,res)=>{
