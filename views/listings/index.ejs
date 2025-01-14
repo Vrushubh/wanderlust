@@ -1,0 +1,117 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    #filters{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem; 
+        margin-top: 2rem;
+    }
+    .filter{
+        display: flex;
+        flex-direction: column;
+        opacity: 0.9;
+        text-align: center;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+    .text{
+        font-weight: bold;
+    }
+    .icon{
+        margin-left: 8px;
+        font-size: 48px;
+    }
+    .gst{
+        display: none;
+    }
+    #check{
+        border: 2px solid black;
+    }
+</style>
+<body>
+    
+    <div id="filters">
+        <div class="filter">
+            <span class="iconify icon" data-icon="noto:fire"></span>
+            <span class="text">Trending</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="noto:bed"></span>
+            <span class="text">Rooms</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="fxemoji:cityscape"></span>
+            <span class="text">Cities</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="fluent-emoji-flat:beach-with-umbrella"></span>
+            <span class="text">Beach</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="noto:castle"></span>
+            <span class="text">Castles</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="ic:outline-pool"></span>
+            <span class="text">Castles</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="noto:camping"></span>
+            <span class="text">Camping</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="openmoji:hotel"></span>
+            <span class="text">Hotels</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="noto:snow-capped-mountain"></span>
+            <span class="text">Kashmir</span>
+        </div>
+        <div class="filter">
+            <span class="iconify icon" data-icon="twemoji:hindu-temple"></span>
+            <span class="text">Spiritual</span>
+        </div>
+        <div class="ms-auto" id="check" style="border-radius: 1rem;">
+            <div class="form-check-reverse form-switch m-3">
+                <input class="form-check-input" style="cursor: pointer;" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                <label class="form-check-label" for="flexSwitchCheckChecked"><b>Display Total After Taxes &nbsp; &nbsp; </b></label>
+              </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2">
+        <% for(let listing of allListings){ %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card col listing-card">
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%=listing.title%></b>
+                            <br>
+                            &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                            <span class="gst"><b>&nbsp; +18%  GST</b></span>
+                        </p>
+                    </div>
+                  </div>
+            </a>
+              <% } %>
+    </div>
+</body>
+
+<script>
+    let taxSwitch = document.getElementById("check");
+    taxSwitch.addEventListener("click",()=>{
+        let gsts = document.getElementsByClassName("gst");
+        for(info of gsts){
+            if(info.style.display!="inline"){
+                info.style.display="inline";
+            }else{
+                info.style.display="none";
+            }
+        }
+    })
+</script>

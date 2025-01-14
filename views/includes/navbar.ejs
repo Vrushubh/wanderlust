@@ -1,0 +1,33 @@
+
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><i class="=fa fa-home"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Home</a>
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <% if(!logi) {%>
+            <a class="nav-link" href="/login"><button class="btn btn-success">Login</button></a>
+            <a class="nav-link" href="/signup"><button class="btn btn-success">Sign Up</button></a>
+          <% } %>
+          <% if(logi) {%>
+            <a class="nav-link" href="/logout"><button class="btn btn-danger">Logout</button></a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
